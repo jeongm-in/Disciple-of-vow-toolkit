@@ -23,7 +23,6 @@
     flex-direction: row;
     justify-content: space-around;
     flex-flow:  row wrap;
-    border:1px solid red;
 }
 
 .symbol{

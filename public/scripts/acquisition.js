@@ -52,14 +52,11 @@ function enterSession(key) {
         else {
             document.getElementById('sessionIdValue').innerText = "Session ID: " + key;
         }
-        // document.querySelector('.buttonArea').style.display = 'block';
-        // document.querySelector('.buttons').style.display = 'grid';
 
         let idConnected = document.querySelector("#uConnected");
         let dbConnected = firebase.database().ref().child(key).child('uConnected');
         dbConnected.on('value', snap => idConnected.innerText = snap.val());
         dbConnected.on('value', snap => uConnected = snap.val());
-
 
         uConnected++;
         let o_temp = {};
