@@ -103,3 +103,8 @@ body{
     align-items: center;
     height:15vh;
 }
+
+
+.labelContainer{
+    display:block;
+}

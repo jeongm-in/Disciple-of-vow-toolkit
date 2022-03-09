@@ -18,6 +18,7 @@ function init() {
 function enterSession(key) {
 
     document.getElementById("sessionInput").style.display = "none";
+    document.getElementById("sessionLabel").style.display = "none";
     document.getElementsByClassName("resetButton")[0].style.display = "block";
 
 
@@ -70,7 +71,6 @@ function enterSession(key) {
         resetButton.addEventListener("click", () => {
             o_temp = { buttonsPressed: 0 };
             firebase.database().ref().child(key).update(o_temp);
-            let buttonsPressed = 0;
             dbGlobal.set({
                 'antarctica': "beige",
                 'earth': "beige",
@@ -87,12 +87,12 @@ function enterSession(key) {
                 'tower': "beige",
                 'buttonsPressed': 0,
                 'exists': 1,
-                'uConnected': 0,
+                'uConnected': uConnected,
                 'timestamp': Date.now()
             });
 
 
-            window.onbeforeunload = function (e) {
+            window.onbeforeunload = () => {
                 uConnected--;
                 o_temp = { 'uConnected': uConnected };
                 firebase.database().ref().child(key).update(o_temp);
@@ -151,18 +151,18 @@ function createWatchers(key) {
             s.addEventListener("click", (event) => {
                 let o_temp = {};
                 const tag = event.target.dataset.for
-                let k_temp = tag; 
-                
+                let k_temp = tag;
+
                 const box = document.getElementById(tag)
 
-                if(getColor(box) == "beige"){
-                    if (buttonsPressed < 3){
+                if (getColor(box) == "beige") {
+                    if (buttonsPressed < 3) {
                         o_temp[k_temp] = "#E66100"
                     }
                     buttonsPressed++;
                 }
-                k_temp = buttonsPressed; 
-                o_temp["buttonsPressed"] = buttonsPressed; 
+                k_temp = buttonsPressed;
+                o_temp["buttonsPressed"] = buttonsPressed;
                 dbGlobal.update(o_temp);
             });
         }

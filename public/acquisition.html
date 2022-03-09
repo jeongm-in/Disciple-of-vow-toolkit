@@ -11,7 +11,10 @@
 <body>
     <h3 id="sessionIdValue">Acquisition Helper</h3>
     <div>
+        <div class="labelContainer">
+        <label id="sessionLabel" for="sessionInput">Enter your session ID:</label>
         <input id="sessionInput" type="text" placeholder="Enter session ID">
+        </div>
     </div>
 
     <div class="websiteArea">
@@ -19,11 +22,14 @@
         <div class="buttonZone">
             <div> Users connected: <span id="uConnected"></span></div>
             <button class="resetButton">RESET</button>
-            <select title="Callout Selector" class="calloutSelect">
-                <option value="fireteamVeggers">Fireteam Veggers</option>
-                <option value="bungieStandard">Bungie Official</option>
-                <option value="bungieStandardKor">번지 공식</option>
-            </select>
+            <div class="labelContainer">
+                <label for="callouts">Choose a callout:</label>
+                <select id="callouts" title="Callout Selector" class="calloutSelect">
+                    <option value="fireteamVeggers">Veggers Callout</option>
+                    <option value="bungieStandard">Bungie Official</option>
+                    <option value="bungieStandardKor">번지 공식</option>
+                </select>
+            </div>
         </div>
 
         <div class="controlZone">
