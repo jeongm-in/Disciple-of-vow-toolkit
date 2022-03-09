@@ -1,36 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>
-        Vow of the Disciple Helper
-    </title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">   
-    <script src="https://kit.fontawesome.com/86771732b9.js" crossorigin="anonymous"></script>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acquisition Helper</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
+
 <body>
-    <h1><a href="acquisition.html">Acquisition Helper</a></h1>
-
+    <h3 id="sessionIdValue">Acquisition Helper</h3>
+	
     <div>
-        <p>
-            Inspired by <a href="https://rivengaze.firebaseapp.com/">Riven's Gaze by @elbisbe</a> 
-        </p>
-        <p>
-            Made by <i class="fa-brands fa-discord"></i> PLEP#6871
-        </p>
-        <p>
-            Also check out <a href="https://plepplep.tk">Destiny infographic collection</a>
-        </p>
-    </div>
-    <div>
-        <h2>~ Q & A ~</h2>
-        <p>
-            Q: What is session ID for Acquisition helper?
-        </p>
-        <p>
-            A: Session ID is a unique key to create your fireteam's realtime database. Symbol information will be stored in the database and synced across your fireteam's sessions.
-        </p>
+        <div class="labelContainer">
+			<label id="sessionLabel" for="sessionInput">Enter your session ID:</label>
+			<input id="sessionInput" type="text" placeholder="Enter session ID">
+        </div>
+		<label class="switch">Toggle to hide Session ID:
+			<input type="checkbox" id="hideSessionIdSwitch">
+		</label>
     </div>
 
+    <div class="websiteArea">
+
+        <div class="buttonZone">
+            <div> Users connected: <span id="uConnected"></span></div>
+            <button class="resetButton">RESET</button>
+            <div class="labelContainer">
+                <label for="callouts">Choose a callout:</label>
+                <select id="callouts" title="Callout Selector" class="calloutSelect">
+                    <option value="fireteamVeggers">Veggers Callout</option>
+                    <option value="bungieStandard">Bungie Official</option>
+                    <option value="bungieStandardKor">번지 공식</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="controlZone">
+            <div class="symbols">
+                <div class="symbol" data-for="antarctica" id="antarctica">
+                    <div name="antarcticaArea" class="overlay" data-for="antarctica">
+                        <img class="icon" src="rsrc/antarctica.png" data-for="antarctica">
+                        <div id="antarcticaText" data-for="antarctica">
+                            Antarctica
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="earth" id="earth">
+                    <div name="earthArea" class="overlay" data-for="earth">
+                        <img class="icon" src="rsrc/earth.png" data-for="earth">
+                        <div id="earthText" data-for="earth">
+                            Earth
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="face" id="face">
+                    <div name="faceArea" class="overlay" data-for="face">
+                        <img class="icon" src="rsrc/face.png" data-for="face">
+                        <div id="faceText" data-for="face">
+                            Face
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="fleet" id="fleet">
+                    <div name="fleetArea" class="overlay" data-for="fleet">
+                        <img class="icon" src="rsrc/fleet.png" data-for="fleet">
+                        <div id="fleetText" data-for="fleet">
+                            Fleet
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="flower" id="flower">
+                    <div name="flowerArea" class="overlay" data-for="flower">
+                        <img class="icon" src="rsrc/flower.png" data-for="flower">
+                        <div id="flowerText" data-for="flower">
+                            Flower
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="forsaken" id="forsaken">
+                    <div name="forsakenArea" class="overlay" data-for="forsaken">
+                        <img class="icon" src="rsrc/forsaken.png" data-for="forsaken">
+                        <div id="forsakenText" data-for="forsaken">
+                            Forsaken
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="res" id="res">
+                    <div name="resArea" class="overlay" data-for="res">
+                        <img class="icon" src="rsrc/res.png" data-for="res">
+                        <div id="resText" data-for="res">
+                            Res
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="garden" id="garden">
+                    <div name="gardenArea" class="overlay" data-for="garden">
+                        <img class="icon" src="rsrc/garden.png" data-for="garden">
+                        <div id="gardenText" data-for="garden">
+                            Garden
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="snek" id="snek">
+                    <div name="snekArea" class="overlay" data-for="snek">
+                        <img class="icon" src="rsrc/snek.png" data-for="snek">
+                        <div id="snekText" data-for="snek">
+                            Snek
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="wellspring" id="wellspring">
+                    <div name="wellspringArea" class="overlay" data-for="wellspring">
+                        <img class="icon" src="rsrc/wellspring.png" data-for="wellspring">
+                        <div id="wellspringText" data-for="wellspring">
+                            Wellspring
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="ww" id="ww">
+                    <div name="wwArea" class="overlay" data-for="ww">
+                        <img class="icon" src="rsrc/ww.png" data-for="ww">
+                        <div id="wwText" data-for="ww">
+                            W
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="witness" id="witness">
+                    <div name="witnessArea" class="overlay" data-for="witness">
+                        <img class="icon" src="rsrc/witness.png" data-for="witness">
+                        <div id="witnessText" data-for="witness">
+                            Witness
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol" data-for="tower" id="tower">
+                    <div name="towerArea" class="overlay" data-for="tower">
+                        <img class="icon" src="rsrc/tower.png" data-for="tower">
+                        <div id="towerText" data-for="tower">
+                            Tower
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" ;></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyANPI4wKffoAFMcCGzk-bZ6zZQLCvpovp8",
+            authDomain: "vod-88330.firebaseapp.com",
+            databaseURL: "https://vod-88330-default-rtdb.firebaseio.com",
+            projectId: "vod-88330",
+            storageBucket: "vod-88330.appspot.com",
+            messagingSenderId: "818811242311",
+            appId: "1:818811242311:web:0486bc7a6c844c73236e62"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        
+    </script>
+    <script type="text/javascript" src="scripts/acquisition.js"></script>
 </body>
+
 </html>
