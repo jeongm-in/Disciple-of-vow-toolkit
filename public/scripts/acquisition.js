@@ -160,7 +160,11 @@ function createWatchers(key) {
                         o_temp[k_temp] = "#E66100"
                     }
                     buttonsPressed++;
+                } else if(getColor(box) == "#E66100"){				
+					o_temp[k_temp] = "beige";
+                    buttonsPressed--;
                 }
+                
                 k_temp = buttonsPressed;
                 o_temp["buttonsPressed"] = buttonsPressed;
                 dbGlobal.update(o_temp);
