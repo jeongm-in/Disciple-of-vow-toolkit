@@ -3,6 +3,10 @@
 
 init();
 
+var allButtons = new Map();
+
+let originalButtonPositions = new Map();
+
 function init() {
 
     updateLabel();
