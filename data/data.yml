@@ -1,5 +1,5 @@
 ---
-- fireteamVeggers:
+fireteamVeggers:
   - antarcticaText: antarctica
   - earthText: earth
   - faceText: face
@@ -14,7 +14,7 @@
   - witnessText: witness
   - towerText: tower
 
-- bungieStandard:
+bungieStandard:
   - antarcticaText: Black heart
   - earthText: Earth
   - faceText: Hive
@@ -29,7 +29,7 @@
   - witnessText: Witness
   - towerText: Tower
 
-- bungieStandardKor:
+bungieStandardKor:
   - antarcticaText: 검은심장
   - earthText: 지구
   - faceText: 군체

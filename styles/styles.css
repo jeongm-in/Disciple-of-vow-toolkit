@@ -12,9 +12,10 @@
 .controlZone{
     display: flex;
     margin-top: 50px;
-    width:60%;
+    width:65%;
 
 }
+
 
 .symbols{
     width: 100vw;
@@ -28,7 +29,7 @@
 .symbol{
     width: 128px;
     height: 128px;
-    background-color: beige;
+    background-color: #FFF;
     border:2px solid black;
     display:flex;
     flex-direction: column;
@@ -36,15 +37,13 @@
     margin:10px;
 }
 
-.accent{
-    background-color: #E66100
-}
 
 
 body{
     background-color:#DDD;
     text-align: center;
-    font-size:1.5em;
+    font-size:20px;
+    
 }
 
 
@@ -57,7 +56,8 @@ body{
     height:15vh;
 }
 
-#resetButton{
+.resetButton{
     width:150px;
     height:40px;
+    display:none;
 }

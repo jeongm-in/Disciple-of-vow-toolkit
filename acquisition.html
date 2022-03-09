@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acquisition Helper</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
-
+    <script src="https://kit.fontawesome.com/86771732b9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1 id="">Acquisition Helper</h1>
+    <h3 id="sessionIdValue">Acquisition Helper</h3>
     <div>
-        <input type="text" placeholder="Enter session ID">
+        <input id="sessionInput" type="text" placeholder="Enter session ID">
     </div>
 
     <div class="websiteArea">
 
         <div class="buttonZone">
-            <button id="resetButton">RESET</button>
-            <div> Users connected: <span>0</span></div>
-            <select class="calloutSelect">
+            <button class="resetButton">RESET</button>
+            <div> Users connected: <span id="uConnected">0</span></div>
+            <select title="Callout Selector" class="calloutSelect">
                 <option value="fireteamVeggers">Fireteam Veggers</option>
                 <option value="bungieStandard">Bungie Standard</option>
                 <option value="bungieStandardKor">번지 표준</option>
@@ -27,107 +29,107 @@
 
         <div class="controlZone">
             <div class="symbols">
-                <div class="symbol accent">
-                    <div>
-                        <img src="rsrc/antarctica.png">
-                        <div id="antarcticaText">
-                            antarctica
+                <div class="symbol" data-for="antarctica" id="antarctica">
+                    <div name="antarcticaArea" class="overlay" data-for="antarctica">
+                        <img src="rsrc/antarctica.png" data-for="antarctica">
+                        <div id="antarcticaText" data-for="antarctica">
+                            Antarctica
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="earth" id="earth">
                     <div>
-                        <img src="rsrc/earth.png">
-                        <div id="earthText">
-                            earth
+                        <img src="rsrc/earth.png" data-for="earth">
+                        <div id="earthText" data-for="earth">
+                            Earth
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="face" id="face">
                     <div>
-                        <img src="rsrc/face.png">
-                        <div id="faceText">
-                            face
+                        <img src="rsrc/face.png" data-for="face">
+                        <div id="faceText" data-for="face">
+                            Face
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="fleet" id="fleet">
                     <div>
-                        <img src="rsrc/fleet.png">
-                        <div id="fleetText">
-                            fleet
+                        <img src="rsrc/fleet.png" data-for="fleet">
+                        <div id="fleetText" data-for="fleet">
+                            Fleet
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="flower" id="flower">
                     <div>
-                        <img src="rsrc/flower.png">
-                        <div id="flowerText">
-                            flower
+                        <img src="rsrc/flower.png" data-for="flower">
+                        <div id="flowerText" data-for="flower">
+                            Flower
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="forsaken" id="forsaken">
                     <div>
-                        <img src="rsrc/forsaken.png">
-                        <div id="forsakenText">
-                            forsaken
+                        <img src="rsrc/forsaken.png" data-for="forsaken">
+                        <div id="forsakenText" data-for="forsaken">
+                            Forsaken
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="res" id="res">
                     <div>
-                        <img src="rsrc/res.png">
-                        <div id="resText">
-                            res
+                        <img src="rsrc/res.png" data-for="res">
+                        <div id="resText" data-for="res">
+                            Res
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="garden" id="garden">
                     <div>
-                        <img src="rsrc/garden.png">
-                        <div id="gardenText">
-                            garden
+                        <img src="rsrc/garden.png" data-for="garden">
+                        <div id="gardenText" data-for="garden">
+                            Garden
                         </div>
                     </div>
                 </div>
-                <div class="symbol accent">
+                <div class="symbol" data-for="snek" id="snek">
                     <div>
-                        <img src="rsrc/snek.png">
-                        <div id="snekText">
-                            snek
+                        <img src="rsrc/snek.png" data-for="snek">
+                        <div id="snekText" data-for="snek">
+                            Snek
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="wellspring" id="wellspring">
                     <div>
-                        <img src="rsrc/wellspring.png">
-                        <div id="wellspringText">
-                            wellspring
+                        <img src="rsrc/wellspring.png" data-for="wellspring">
+                        <div id="wellspringText" data-for="wellspring">
+                            Wellspring
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="ww" id="ww">
                     <div>
-                        <img src="rsrc/ww.png">
-                        <div id="wwText">
+                        <img src="rsrc/ww.png" data-for="ww">
+                        <div id="wwText" data-for="ww">
                             W
                         </div>
                     </div>
                 </div>
-                <div class="symbol accent">
+                <div class="symbol" data-for="witness" id="witness">
                     <div>
-                        <img src="rsrc/witness.png">
-                        <div id="witnessText">
-                            witness
+                        <img src="rsrc/witness.png" data-for="witness">
+                        <div id="witnessText" data-for="witness">
+                            Witness
                         </div>
                     </div>
                 </div>
-                <div class="symbol">
+                <div class="symbol" data-for="tower" id="tower">
                     <div>
-                        <img src="rsrc/tower.png">
-                        <div id="towerText">
-                            tower
+                        <img src="rsrc/tower.png" data-for="tower">
+                        <div id="towerText" data-for="tower">
+                            Tower
                         </div>
                     </div>
                 </div>
@@ -136,7 +138,24 @@
     </div>
 
 
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" ;></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyANPI4wKffoAFMcCGzk-bZ6zZQLCvpovp8",
+            authDomain: "vod-88330.firebaseapp.com",
+            databaseURL: "https://vod-88330-default-rtdb.firebaseio.com",
+            projectId: "vod-88330",
+            storageBucket: "vod-88330.appspot.com",
+            messagingSenderId: "818811242311",
+            appId: "1:818811242311:web:0486bc7a6c844c73236e62"
+        };
 
+        const app = firebase.initializeApp(firebaseConfig);
+        
+    </script>
+    <script type="text/javascript" src="scripts/acquisition.js"></script>
 </body>
 
 </html>
