@@ -3,6 +3,10 @@
 
 init();
 
+var allButtons = new Map();
+
+let originalButtonPositions = new Map();
+
 function init() {
 
     updateLabel();
@@ -16,33 +20,43 @@ function init() {
 }
 
 function enterSession(key) {
+		
 
     document.getElementById("sessionInput").style.display = "none";
     document.getElementById("sessionLabel").style.display = "none";
     document.getElementsByClassName("resetButton")[0].style.display = "block";
 
+		
+
 
     let exists = 0;
+		
+	
     let dbexists = app.database().ref().child(key).child("exists");
+	
     dbexists.on('value', snap => exists = snap.val());
+		
+	
+	
 
     let uConnected = 0;
     setTimeout(() => {
+
         if (exists != 1) {
             firebase.database().ref().child(key).set({
-                'antarctica': "beige",
-                'earth': "beige",
-                'face': "beige",
-                'fleet': "beige",
-                'flower': "beige",
-                'forsaken': "beige",
-                'res': "beige",
-                'garden': "beige",
-                'snek': "beige",
-                'wellspring': "beige",
-                'ww': "beige",
-                'witness': "beige",
-                'tower': "beige",
+                'antarctica': "inactive",
+                'earth': "inactive",
+                'face': "inactive",
+                'fleet': "inactive",
+                'flower': "inactive",
+                'forsaken': "inactive",
+                'res': "inactive",
+                'garden': "inactive",
+                'snek': "inactive",
+                'wellspring': "inactive",
+                'ww': "inactive",
+                'witness': "inactive",
+                'tower': "inactive",
                 'buttonsPressed': 0,
                 'exists': 1,
                 'uConnected': 0,
@@ -54,7 +68,10 @@ function enterSession(key) {
             document.getElementById('sessionIdValue').innerText = "Session ID: " + key;
         }
 
-        let idConnected = document.querySelector("#uConnected");
+
+        		
+
+		let idConnected = document.querySelector("#uConnected");
         let dbConnected = firebase.database().ref().child(key).child('uConnected');
         dbConnected.on('value', snap => idConnected.innerText = snap.val());
         dbConnected.on('value', snap => uConnected = snap.val());
@@ -68,37 +85,44 @@ function enterSession(key) {
 
         let dbGlobal = firebase.database().ref().child(key);
         let resetButton = document.querySelector(".resetButton");
-        resetButton.addEventListener("click", () => {
+        resetButton.addEventListener("click", () => {		
+
             o_temp = { buttonsPressed: 0 };
             firebase.database().ref().child(key).update(o_temp);
+					
+
             dbGlobal.set({
-                'antarctica': "beige",
-                'earth': "beige",
-                'face': "beige",
-                'fleet': "beige",
-                'flower': "beige",
-                'forsaken': "beige",
-                'res': "beige",
-                'garden': "beige",
-                'snek': "beige",
-                'wellspring': "beige",
-                'ww': "beige",
-                'witness': "beige",
-                'tower': "beige",
+                'antarctica': "inactive",
+                'earth': "inactive",
+                'face': "inactive",
+                'fleet': "inactive",
+                'flower': "inactive",
+                'forsaken': "inactive",
+                'res': "inactive",
+                'garden': "inactive",
+                'snek': "inactive",
+                'wellspring': "inactive",
+                'ww': "inactive",
+                'witness': "inactive",
+                'tower': "inactive",
                 'buttonsPressed': 0,
                 'exists': 1,
                 'uConnected': uConnected,
                 'timestamp': Date.now()
             });
 
+		
 
             window.onbeforeunload = () => {
                 uConnected--;
                 o_temp = { 'uConnected': uConnected };
+						
+
                 firebase.database().ref().child(key).update(o_temp);
             }
         });
     }, 2000);
+
 
     createWatchers(key);
 
@@ -111,11 +135,18 @@ function createWatchers(key) {
     let resetButton = document.querySelector(".resetButton");
 
     let buttonsPressed = 0;
+			
+
     let dbPressed = firebase.database().ref().child(key).child('buttonsPressed');
+			
+
     dbPressed.on('value', snap => buttonsPressed = snap.val());
+		
 
     let dbGlobal = firebase.database().ref().child(key);
     let dbBtn = new Array(13);
+			
+
 
     dbBtn[0] = dbGlobal.child('antarctica');
     dbBtn[1] = dbGlobal.child('earth');
@@ -130,52 +161,134 @@ function createWatchers(key) {
     dbBtn[10] = dbGlobal.child('ww');
     dbBtn[11] = dbGlobal.child('witness');
     dbBtn[12] = dbGlobal.child('tower');
+	
 
-    dbBtn[0].on('value', snap => a_float[0].style.backgroundColor = snap.val());
-    dbBtn[1].on('value', snap => a_float[1].style.backgroundColor = snap.val());
-    dbBtn[2].on('value', snap => a_float[2].style.backgroundColor = snap.val());
-    dbBtn[3].on('value', snap => a_float[3].style.backgroundColor = snap.val());
-    dbBtn[4].on('value', snap => a_float[4].style.backgroundColor = snap.val());
-    dbBtn[5].on('value', snap => a_float[5].style.backgroundColor = snap.val());
-    dbBtn[6].on('value', snap => a_float[6].style.backgroundColor = snap.val());
-    dbBtn[7].on('value', snap => a_float[7].style.backgroundColor = snap.val());
-    dbBtn[8].on('value', snap => a_float[8].style.backgroundColor = snap.val());
-    dbBtn[9].on('value', snap => a_float[9].style.backgroundColor = snap.val());
-    dbBtn[10].on('value', snap => a_float[10].style.backgroundColor = snap.val());
-    dbBtn[11].on('value', snap => a_float[11].style.backgroundColor = snap.val());
-    dbBtn[12].on('value', snap => a_float[12].style.backgroundColor = snap.val());
+    dbBtn[0].on('value', snap => updateButton(snap, 0));
+	dbBtn[1].on('value', snap => updateButton(snap, 1));
+	dbBtn[2].on('value', snap => updateButton(snap, 2));
+	dbBtn[3].on('value', snap => updateButton(snap, 3));
+	dbBtn[4].on('value', snap => updateButton(snap, 4));
+	dbBtn[5].on('value', snap => updateButton(snap, 5));
+	dbBtn[6].on('value', snap => updateButton(snap, 6));
+	dbBtn[7].on('value', snap => updateButton(snap, 7));
+	dbBtn[8].on('value', snap => updateButton(snap, 8));
+	dbBtn[9].on('value', snap => updateButton(snap, 9));
+	dbBtn[10].on('value', snap => updateButton(snap, 10));
+	dbBtn[11].on('value', snap => updateButton(snap, 11));
+	dbBtn[12].on('value', snap => updateButton(snap, 12));
 
+		
 
     Array.from(document.getElementsByClassName("symbol")).forEach(
         s => {
             s.addEventListener("click", (event) => {
+
                 let o_temp = {};
                 const tag = event.target.dataset.for
                 let k_temp = tag;
-
-                const box = document.getElementById(tag)
-
-                if (getColor(box) == "beige") {
+				
+		
+                const box = document.getElementById(tag);
+				
+				/*
+				dbGlobal.child(tag).on("value", snap =>{
+					snap.val();
+				}); //This works but let's reduce firebase calls, original didn't call in either
+				*/
+		
+             
+				if(allButtons.get(tag) == "inactive"){				
                     if (buttonsPressed < 3) {
-                        o_temp[k_temp] = "#E66100"
+						o_temp[k_temp] = "active";
                     }
                     buttonsPressed++;
+                } else if(allButtons.get(tag) == "active"){				
+					o_temp[k_temp] = "inactive";
+                    buttonsPressed--;
                 }
-                k_temp = buttonsPressed;
+						
+
+				
+				k_temp = buttonsPressed;
                 o_temp["buttonsPressed"] = buttonsPressed;
+				
                 dbGlobal.update(o_temp);
+				
             });
         }
     )
+		
 
     let ref = firebase.database().ref();
+			
+
     let now = Date.now();
     let cutoff = now - 2 * 60 * 60 * 1000; // remove db after 2 hours
     let old = ref.orderByChild('timestamp').endAt(cutoff).limitToLast(1);
     old.on('child_added', function (snapshot) {
         snapshot.ref.remove();
     });
+			
 
+
+}
+
+function updateButton(incoming, index){
+	allButtons.set(incoming.key, incoming.val());
+	var color = "beige";
+	let a_float = document.querySelectorAll(".symbol");
+	if(incoming.val() == "active"){
+		color = "#E66100";
+	} 
+	a_float[index].style.backgroundColor = color;
+}
+
+
+function initLocalDataset(){
+	var index = 0;
+	Array.from(document.getElementsByClassName("symbol")).forEach(
+        s => {
+			allButtons.set(s,  "inactive");
+			originalButtonPositions.set(s, index);
+			index++;
+		})
+}
+
+/*Not used
+*/
+function sortButtons(){
+	let htmlNodeList = document.getElementsByClassName("symbol");
+	let nodeList = allButtons;
+	console.log(nodeList);
+  [].slice.call(htmlNodeList).sort( function(a,b){ 
+		
+		//console.log(allButtons.getValue(a));
+		 var aFare = allButtons.get(a);
+		 if (aFare === "active"){
+			 console.log(a);
+			 console.log("moving it up");
+			a.parentNode.insertBefore( a, a.parentElement.firstChild);
+		 } else {
+			 //a.parentNode.insert(originalSymbolOrder.indexOf(a));
+		 }
+		 return 0;
+   });
+}
+
+/*Not used
+*/
+function resetButtonPositions(){
+	console.log("reset called");
+	var symbolArray = Array.prototype.slice.call(document.getElementsByClassName("symbol"), 0);
+	symbolArray.sort(function(a,b) {
+		var aCat = originalButtonPositions.get(a);
+		var bCat = originalButtonPositions.get(b);
+		console.log(aCat);
+		if (aCat > bCat) return 1;
+		if (aCat < bCat) return -1;
+		return 0;
+	});
+	
 }
 
 
@@ -185,16 +298,28 @@ function getColor(button) {
 
 
 function updateLabel() {
+			
+
     let selector = document.querySelector(".calloutSelect")
     selector.addEventListener("change", () => {
+				
+
         let selectedOption = selector.options[selector.selectedIndex].value;
         const calloutList = calloutData[selectedOption];
+				
+
 
         calloutList.forEach(element => {
+					
+
             const key = element.key
             const value = element.value
             document.getElementById(key).innerText = value;
+					
+
         });
     })
+			
+
 
 }
