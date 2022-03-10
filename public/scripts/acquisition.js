@@ -12,6 +12,14 @@ function init() {
             enterSession(keyInput.value);
         }
     })
+    document.getElementById("hideSessionIdSwitch").addEventListener("click", (event) => {
+		let sessionIdLabel = document.getElementById("sessionIdValue");
+		if(event.target.checked){
+			sessionIdLabel.style.display = "none";
+		} else {
+			sessionIdLabel.style.display = "block";	
+		}			
+	})
 
 }
 

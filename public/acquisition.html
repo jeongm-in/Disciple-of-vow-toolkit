@@ -10,11 +10,15 @@
 
 <body>
     <h3 id="sessionIdValue">Acquisition Helper</h3>
+	
     <div>
         <div class="labelContainer">
-        <label id="sessionLabel" for="sessionInput">Enter your session ID:</label>
-        <input id="sessionInput" type="text" placeholder="Enter session ID">
+			<label id="sessionLabel" for="sessionInput">Enter your session ID:</label>
+			<input id="sessionInput" type="text" placeholder="Enter session ID">
         </div>
+		<label class="switch">Toggle to hide Session ID:
+			<input type="checkbox" id="hideSessionIdSwitch">
+		</label>
     </div>
 
     <div class="websiteArea">
@@ -43,7 +47,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="earth" id="earth">
-                    <div>
+                    <div name="earthArea" class="overlay" data-for="earth">
                         <img class="icon" src="rsrc/earth.png" data-for="earth">
                         <div id="earthText" data-for="earth">
                             Earth
@@ -51,7 +55,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="face" id="face">
-                    <div>
+                    <div name="faceArea" class="overlay" data-for="face">
                         <img class="icon" src="rsrc/face.png" data-for="face">
                         <div id="faceText" data-for="face">
                             Face
@@ -59,7 +63,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="fleet" id="fleet">
-                    <div>
+                    <div name="fleetArea" class="overlay" data-for="fleet">
                         <img class="icon" src="rsrc/fleet.png" data-for="fleet">
                         <div id="fleetText" data-for="fleet">
                             Fleet
@@ -67,7 +71,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="flower" id="flower">
-                    <div>
+                    <div name="flowerArea" class="overlay" data-for="flower">
                         <img class="icon" src="rsrc/flower.png" data-for="flower">
                         <div id="flowerText" data-for="flower">
                             Flower
@@ -75,7 +79,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="forsaken" id="forsaken">
-                    <div>
+                    <div name="forsakenArea" class="overlay" data-for="forsaken">
                         <img class="icon" src="rsrc/forsaken.png" data-for="forsaken">
                         <div id="forsakenText" data-for="forsaken">
                             Forsaken
@@ -83,7 +87,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="res" id="res">
-                    <div>
+                    <div name="resArea" class="overlay" data-for="res">
                         <img class="icon" src="rsrc/res.png" data-for="res">
                         <div id="resText" data-for="res">
                             Res
@@ -91,7 +95,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="garden" id="garden">
-                    <div>
+                    <div name="gardenArea" class="overlay" data-for="garden">
                         <img class="icon" src="rsrc/garden.png" data-for="garden">
                         <div id="gardenText" data-for="garden">
                             Garden
@@ -99,7 +103,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="snek" id="snek">
-                    <div>
+                    <div name="snekArea" class="overlay" data-for="snek">
                         <img class="icon" src="rsrc/snek.png" data-for="snek">
                         <div id="snekText" data-for="snek">
                             Snek
@@ -107,7 +111,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="wellspring" id="wellspring">
-                    <div>
+                    <div name="wellspringArea" class="overlay" data-for="wellspring">
                         <img class="icon" src="rsrc/wellspring.png" data-for="wellspring">
                         <div id="wellspringText" data-for="wellspring">
                             Wellspring
@@ -115,7 +119,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="ww" id="ww">
-                    <div>
+                    <div name="wwArea" class="overlay" data-for="ww">
                         <img class="icon" src="rsrc/ww.png" data-for="ww">
                         <div id="wwText" data-for="ww">
                             W
@@ -123,7 +127,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="witness" id="witness">
-                    <div>
+                    <div name="witnessArea" class="overlay" data-for="witness">
                         <img class="icon" src="rsrc/witness.png" data-for="witness">
                         <div id="witnessText" data-for="witness">
                             Witness
@@ -131,7 +135,7 @@
                     </div>
                 </div>
                 <div class="symbol" data-for="tower" id="tower">
-                    <div>
+                    <div name="towerArea" class="overlay" data-for="tower">
                         <img class="icon" src="rsrc/tower.png" data-for="tower">
                         <div id="towerText" data-for="tower">
                             Tower
