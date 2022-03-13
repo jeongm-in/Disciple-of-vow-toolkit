@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "site":"vowofthedisciple",
+    "site": "vowofthedisciple",
     "public": "public",
     "ignore": [
       "firebase.json",
