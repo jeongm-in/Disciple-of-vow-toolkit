@@ -27,7 +27,8 @@ function init() {
 
 }
 
-//on keyup, this function is called, but why? what does it do?
+//This function prepares the UI components after DB sync is established.
+//So we get rid of the inputs and run the necessary DB connection etc
 function enterSession(key) {
     document.getElementById("sessionInput").style.display = "none";
     document.getElementById("sessionLabel").style.display = "none";
